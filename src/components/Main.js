@@ -67,13 +67,8 @@ class Main extends React.Component {
 
         </article>
           <article id="resume" className={`${this.props.article === 'resume' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-          <script>
-            function resizeIframe(obj) {
-              obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-            }
-          </script>
           <h2 className="major">Resume</h2>
-          <iframe src={resume} width="100%" height="500px" onload="resizeIframe(this)">
+          <iframe src={resume} width="800%" height="800px">
           </iframe>
           {close}
         </article>
