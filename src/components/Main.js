@@ -68,7 +68,7 @@ class Main extends React.Component {
         </article>
           <article id="resume" className={`${this.props.article === 'resume' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Resume</h2>
-          <iframe src={resume} width="800%" height="800px">
+          <iframe src={resume} width="300%" height="800px">
           </iframe>
           {close}
         </article>
