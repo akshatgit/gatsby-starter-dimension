@@ -5,6 +5,8 @@ import pic01 from '../images/pic01.jpg'
 import pic02 from '../images/pic02.jpg'
 import pic03 from '../images/pic03.jpg'
 
+import resume from '../pdfs/resume.pdf'
+
 class Main extends React.Component {
   render() {
 
@@ -66,7 +68,7 @@ class Main extends React.Component {
         </article>
           <article id="resume" className={`${this.props.article === 'resume' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Resume</h2>
-          <iframe src="../pdfs/resume.pdf" width="100%" height="500px">
+          <iframe src={resume} width="100%" height="500px">
           </iframe>
           {close}
         </article>
