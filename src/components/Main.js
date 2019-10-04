@@ -44,8 +44,10 @@ class Main extends React.Component {
               <input type="text" name="name" id="name" />
             </div>
             <div className="field half">
-              <label htmlFor="email">Email</label>
-              <input type="text" name="email" id="email" />
+              <label htmlFor="email">Your Email</label>
+              <input type="text" name="_replyto" id="email" />
+              <input type="text" name="_gotcha" style="display:none" />
+              <input type="hidden" name="_subject" value="New Mail from site!" />
             </div>
             <div className="field">
               <label htmlFor="message">Message</label>
