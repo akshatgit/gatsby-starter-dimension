@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import pic01 from '../images/pic01.jpg'
 import pic02 from '../images/pic02.jpg'
-import pic03 from '../images/pic03.jpg'
+import pic03 from '../images/articles.jpg'
 
 import resume from '../pdfs/resume.pdf'
 
@@ -32,7 +32,33 @@ class Main extends React.Component {
         <article id="publication" className={`${this.props.article === 'publication' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Publication</h2>
           <span className="image main"><img src={pic03} alt="" /></span>
-          <p>Under development</p>
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Publication Date</th>
+            </tr>
+            <tr>
+              <td><a href="https://dblp.org/rec/conf/imc/YadavSGSC18"> Where The Light Gets In: Analyzing Web Censorship Mechanisms in India</a></td>
+              <td>Research</td>
+              <td>2018</td>
+            </tr>
+            <tr>
+              <td><a href="https://dblp.org/rec/conf/icvgip/SethiSAAG16"> Deep neural networks for segmentation of basal ganglia sub-structures in brain MR images</a></td>
+              <td> Research </td>
+              <td>2016</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.geeksforgeeks.org/socket-programming-cc/"> Socket Programming in C/C++</a></td>
+              <td> Technical Article </td>
+              <td>2016</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.geeksforgeeks.org/linux-kernel-module-programming-hello-world-program/"> Linux Kernel Module Programming</a></td>
+              <td> Technical Article </td>
+              <td>2016</td>
+            </tr>
+          </table>
           {close}
         </article>
 
