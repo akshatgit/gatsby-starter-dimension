@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import pic01 from '../images/pic01.jpg'
-import pic02 from '../images/pic02.jpg'
+import pic02 from '../images/dev.jpg'
 import pic03 from '../images/articles.jpg'
 
 import resume from '../pdfs/resume.pdf'
@@ -25,7 +25,20 @@ class Main extends React.Component {
         <article id="work" className={`${this.props.article === 'work' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Work</h2>
           <span className="image main"><img src={pic02} alt="" /></span>
-          <p>Under development</p>
+          <p>I am a SRE by profession working at <a href="https://media.net">Media.Net</a>.
+          I have worked on the following as my SRE role. 
+          </p>
+          <ul>
+            <li>Database: Redis, Mongo, MySQL</li>
+            <li>Monitoring: Nagios, Icinga, Prometheus, JMXTrans</li>
+            <li>CI/CD: Jenkins</li>
+            <li>Pub/Sub: Kafka</li>
+            <li>Big Data: Hadoop, Druid</li>
+            <li>Web Server: Nginx</li>
+            <li>Infrastructure Automation: Puppet</li>
+            <li>Other: AWS, GCP, OpenVPN,  </li>
+          </ul>
+          <p>I am passionate about learning new backend technologies. Catch me if you have any interesting project to work on. </p>
           {close}
         </article>
 
