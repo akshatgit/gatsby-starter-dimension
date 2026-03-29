@@ -1,20 +1,22 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { FiLinkedin, FiGithub } from 'react-icons/fi'
 
-const Footer = (props) => (
-    <footer id="footer" style={props.timeout ? {display: 'none'} : {}}>
-        <p className="copyright"> Design: <a href="https://html5up.net">HTML5 UP</a>. Built with: <a href="https://www.gatsbyjs.org/">Gatsby.js</a><br />
-        Forked from: <a href="https://github.com/codebushi/gatsby-starter-dimension">Github</a></p>
-        <ul className="icons">
-            <li><a href="https://www.linkedin.com/in/akshat-sinha-568765167/" className="icon fa-linkedin"><span className="label">LinkedIn</span></a></li>
-            <li><a href="https://www.facebook.com/akshat.sinha.5095" className="icon fa-facebook"><span className="label">Facebook</span></a></li>
-            <li><a href="https://github.com/akshatgit" className="icon fa-github"><span className="label">GitHub</span></a></li>
-        </ul>
-    </footer>
+const Footer = () => (
+  <footer className="border-t border-apple-border dark:border-dark-border py-8 px-6 bg-white dark:bg-dark-bg transition-colors duration-300">
+    <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p className="text-xs text-apple-mid-gray dark:text-dark-muted">
+        © {new Date().getFullYear()} Akshat Sinha
+      </p>
+      <div className="flex items-center gap-5">
+        <a href="https://www.linkedin.com/in/akshat-sinha-568765167/" target="_blank" rel="noopener noreferrer" className="text-apple-mid-gray dark:text-dark-muted hover:text-apple-dark-gray dark:hover:text-dark-text transition-colors" aria-label="LinkedIn">
+          <FiLinkedin className="w-4 h-4" />
+        </a>
+        <a href="https://github.com/akshatgit" target="_blank" rel="noopener noreferrer" className="text-apple-mid-gray dark:text-dark-muted hover:text-apple-dark-gray dark:hover:text-dark-text transition-colors" aria-label="GitHub">
+          <FiGithub className="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </footer>
 )
-
-Footer.propTypes = {
-    timeout: PropTypes.bool
-}
 
 export default Footer

@@ -1,23 +1,33 @@
 module.exports = {
   siteMetadata: {
-    title: "Akshat Sinha",
-    author: "Akshat Sinha",
-    description: "Personal Website: Akshat Sinha"
+    title: 'Akshat Sinha',
+    author: 'Akshat Sinha',
+    description: 'Senior Site Reliability Engineer at Rubrik. Network security professional.',
+    siteUrl: 'https://akshatsinha.xyz',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-postcss',
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'Akshat Sinha',
-        short_name: 'site',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        name: 'images',
+        path: `${__dirname}/src/images`,
       },
     },
-    'gatsby-plugin-sass'
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Akshat Sinha',
+        short_name: 'Akshat',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
+        display: 'minimal-ui',
+        icon: 'src/images/gatsby-icon.png',
+      },
+    },
   ],
 }

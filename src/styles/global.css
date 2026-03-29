@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white dark:bg-dark-bg text-apple-dark-gray dark:text-dark-text font-sans antialiased;
+}
+
+/* Nav link active state */
+.nav-link {
+  @apply text-apple-mid-gray text-sm hover:text-apple-dark-gray dark:text-dark-muted dark:hover:text-dark-text transition-colors duration-200;
+}
+
+/* Apple-style section divider */
+.section-divider {
+  @apply w-12 h-px bg-apple-border dark:bg-dark-border mx-auto mb-10;
+}
