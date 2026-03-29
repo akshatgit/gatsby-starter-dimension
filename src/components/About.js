@@ -1,6 +1,6 @@
 import React from 'react'
 
-const current = new Set(['Python', 'Kubernetes', 'Docker', 'Prometheus', 'Kafka', 'Jenkins', 'Terraform', 'Grafana'])
+const current = new Set(['Python', 'Kubernetes', 'Docker', 'GKE', 'GCP', 'Prometheus', 'Kafka', 'Jenkins', 'Terraform', 'Grafana'])
 
 const SkillRow = ({ category, skills }) => (
   <div className="flex items-center gap-2 flex-wrap">
@@ -107,9 +107,13 @@ const About = () => (
     {/* ── Row 2: Skills (4 categories spread across one row) ── */}
     <div>
       <h3 className="text-xs font-medium tracking-widest uppercase text-apple-mid-gray dark:text-dark-muted mb-5">Skills</h3>
+      <p className="text-xs text-apple-mid-gray flex items-center gap-1.5 mb-3">
+        <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
+        currently using
+      </p>
       <div className="space-y-2">
         <SkillRow category="Languages" skills={['Python', 'Bash']} />
-        <SkillRow category="Infrastructure" skills={['Kubernetes', 'Docker', 'Terraform', 'Nomad', 'Puppet', 'Jenkins']} />
+        <SkillRow category="Infrastructure" skills={['Kubernetes', 'Docker', 'GKE', 'GCP', 'Terraform', 'Nomad', 'Puppet', 'Jenkins']} />
         <SkillRow category="Observability" skills={['Prometheus', 'Grafana']} />
         <SkillRow category="Data & Messaging" skills={['Kafka', 'Redis', 'MongoDB', 'MySQL', 'Hadoop', 'Spark']} />
       </div>
