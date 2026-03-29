@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
 
-const useCitations = (semanticScholarId) => {
-  const [count, setCount] = useState(null)
+const useCitations = (semanticScholarId, fallback) => {
+  const [count, setCount] = useState(fallback ?? null)
   useEffect(() => {
     if (!semanticScholarId) return
-    fetch(`https://api.semanticscholar.org/graph/v1/paper/${semanticScholarId}?fields=citationCount`)
-      .then(r => r.json())
-      .then(d => { if (d.citationCount != null) setCount(d.citationCount) })
-      .catch(() => {})
+    let attempts = 0
+    const fetchCount = () => {
+      fetch(`https://api.semanticscholar.org/graph/v1/paper/${semanticScholarId}?fields=citationCount`)
+        .then(r => r.json())
+        .then(d => { if (d.citationCount != null) setCount(d.citationCount) })
+        .catch(() => { if (attempts++ < 2) setTimeout(fetchCount, 2000 * attempts) })
+    }
+    fetchCount()
   }, [semanticScholarId])
   return count
 }
@@ -20,6 +24,7 @@ const papers = [
     year: '2022',
     url: 'https://www.usenix.org/conference/usenixsecurity22/presentation/patel',
     s2id: '7abdfdc90da67eba76cb8b0ca0a9d80e13f3f09e',
+    fallbackCitations: 25,
   },
   {
     title: 'Where The Light Gets In: Analyzing Web Censorship Mechanisms in India',
@@ -28,6 +33,7 @@ const papers = [
     year: '2018',
     url: 'https://doi.org/10.1145/3278532.3278555',
     s2id: 'c4eba96ff5001c43b4c5acaeffd3e555e3ff664a',
+    fallbackCitations: 65,
   },
   {
     title: 'Deep Neural Networks for Segmentation of Basal Ganglia Sub-Structures in Brain MR Images',
@@ -36,6 +42,7 @@ const papers = [
     year: '2016',
     url: 'https://doi.org/10.1145/3009977.3010048',
     s2id: '9e80982bec8cfc6475ef588ed5eedeea445d7579',
+    fallbackCitations: 18,
   },
 ]
 
@@ -61,7 +68,7 @@ const VenueBadge = ({ venue, year }) => (
 )
 
 const PaperRow = ({ paper }) => {
-  const citations = useCitations(paper.s2id)
+  const citations = useCitations(paper.s2id, paper.fallbackCitations)
   return (
     <div className="border-b border-apple-border dark:border-dark-border pb-6 last:border-0 last:pb-0">
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-1">
