@@ -1,0 +1,49 @@
+# Akshat Sinha
+
+> Senior Site Reliability Engineer with 6+ years building large-scale distributed infrastructure. MS Computer Science, University of Wisconsin–Madison (GPA 4.0). Security researcher with CVE discoveries in high-profile open source AI projects.
+
+## Work
+
+- Senior Software Engineer, SRE at Rubrik (Aug 2023–Present, Palo Alto CA) — Incident Commander, Observability as Code, auto-remediation, LLM tooling
+- Site Reliability Engineer at TikTok USDS (Dec 2022–Aug 2023, Mountain View CA) — Video Architecture Team
+- Production Engineer Intern at Meta (May–Aug 2022, Menlo Park CA) — Payments Team
+- Site Reliability Engineer at Media.Net/Directi (Jun 2018–Dec 2020, Mumbai India) — Ads Serving Team
+
+## Education
+
+- MS, Computer Science — University of Wisconsin–Madison (2021–2023), CS Departmental Scholarship, GPA 4.0/4.0
+- BTech, Computer Science — IIIT Delhi (2014–2018), GPA 8.76/10.0
+
+## Publications
+
+- "Using Trātṛ to Tame Adversarial Synchronization" — USENIX Security 2022
+- "Where The Light Gets In: Analyzing Web Censorship Mechanisms in India" — IMC 2018
+- "Deep Neural Networks for Segmentation of Basal Ganglia Sub-Structures in Brain MR Images" — ICVGIP 2016
+
+## Security Research (CVE Discoveries)
+
+- CVE-2026-33309 (Critical, 10.0) — Arbitrary file write via path traversal in Langflow v2 file upload API, enabling RCE
+- CVE-2026-33484 (High, 7.5) — Unauthenticated IDOR on image download endpoint in Langflow
+- CVE-2026-28786 (Moderate, 4.3) — Path traversal in Open WebUI audio transcription endpoint
+
+## Security Research (CVE Remediation Reviews)
+
+- CVE-2026-33150 (High, 7.8) — Use-after-free in libfuse io_uring subsystem
+- CVE-2026-33179 (Moderate, 5.5) — NULL pointer dereference in libfuse io_uring queue initialization
+
+## Service
+
+- Artifact Evaluation Committee Reviewer — OOPSLA 2026
+- Artifact Evaluation Committee Reviewer — MLSys 2026
+
+## Skills
+
+- Languages: Python, Bash
+- Infrastructure: Kubernetes, Docker, Terraform, Nomad, Puppet, Jenkins
+- Observability: Prometheus, Grafana
+- Data & Messaging: Kafka, Redis, MongoDB, MySQL, Hadoop, Spark
+
+## Contact
+
+- LinkedIn: https://www.linkedin.com/in/akshat-sinha-568765167/
+- GitHub: https://github.com/akshatgit
