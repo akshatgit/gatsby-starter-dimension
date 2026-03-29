@@ -26,9 +26,7 @@ const Contact = () => (
       </div>
     </div>
 
-    <form method="post" action="https://formspree.io/akshat.snh28@gmail.com" className="space-y-4">
-      <input type="text" name="_gotcha" style={{ display: 'none' }} />
-      <input type="hidden" name="_subject" value="New message from akshatsinha.xyz" />
+    <form method="post" action="https://formspree.io/f/akshat.snh28@gmail.com" className="space-y-4">
       <div className="grid sm:grid-cols-2 gap-4">
         <input type="text" name="name" placeholder="Your name" className={inputClass} />
         <input type="email" name="_replyto" placeholder="Your email" className={inputClass} />

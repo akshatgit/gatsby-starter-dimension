@@ -1,25 +1,20 @@
 import React from 'react'
 
-const tier1 = new Set(['Python', 'Kubernetes', 'Docker', 'Prometheus'])
-const tier2 = new Set(['Kafka', 'Jenkins', 'Terraform', 'Grafana'])
+const current = new Set(['Python', 'Kubernetes', 'Docker', 'Prometheus', 'Kafka', 'Jenkins', 'Terraform', 'Grafana'])
 
-const SkillBadge = ({ label }) => {
-  if (tier1.has(label)) return (
-    <span className="inline-block bg-apple-blue dark:bg-dark-blue text-white text-xs font-medium px-2.5 py-0.5 rounded-full mr-1.5 mb-1.5">
-      {label}
-    </span>
-  )
-  if (tier2.has(label)) return (
-    <span className="inline-block bg-apple-blue/10 dark:bg-dark-blue/15 text-apple-blue dark:text-dark-blue text-xs font-medium px-2.5 py-0.5 rounded-full mr-1.5 mb-1.5 ring-1 ring-apple-blue/30 dark:ring-dark-blue/30">
-      {label}
-    </span>
-  )
-  return (
-    <span className="inline-block bg-apple-gray dark:bg-dark-elevated text-apple-mid-gray dark:text-dark-muted text-xs font-medium px-2.5 py-0.5 rounded-full mr-1.5 mb-1.5">
-      {label}
-    </span>
-  )
-}
+const SkillRow = ({ category, skills }) => (
+  <div className="flex items-center gap-2 flex-wrap">
+    <span className="text-xs text-apple-mid-gray dark:text-dark-muted shrink-0 w-32">{category}</span>
+    <div className="flex flex-wrap gap-1.5">
+      {skills.map(s => (
+        <span key={s} className="inline-flex items-center gap-1.5 bg-apple-gray dark:bg-dark-elevated text-apple-dark-gray dark:text-dark-text text-xs font-medium px-2.5 py-0.5 rounded-full">
+          {current.has(s) && <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />}
+          {s}
+        </span>
+      ))}
+    </div>
+  </div>
+)
 
 const About = () => (
   <div>
@@ -107,28 +102,16 @@ const About = () => (
     </div>
 
     {/* ── Divider ── */}
-    <div className="border-t border-apple-border dark:border-dark-border mb-8" />
+    <div className="border-t border-apple-border dark:border-dark-border my-14" />
 
     {/* ── Row 2: Skills (4 categories spread across one row) ── */}
     <div>
       <h3 className="text-xs font-medium tracking-widest uppercase text-apple-mid-gray dark:text-dark-muted mb-5">Skills</h3>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div>
-          <p className="text-xs text-apple-mid-gray dark:text-dark-muted mb-1.5">Languages</p>
-          {['Python', 'Bash'].map(s => <SkillBadge key={s} label={s} />)}
-        </div>
-        <div>
-          <p className="text-xs text-apple-mid-gray dark:text-dark-muted mb-1.5">Infrastructure</p>
-          {['Kubernetes', 'Docker', 'Terraform', 'Nomad', 'Puppet', 'Jenkins'].map(s => <SkillBadge key={s} label={s} />)}
-        </div>
-        <div>
-          <p className="text-xs text-apple-mid-gray dark:text-dark-muted mb-1.5">Observability</p>
-          {['Prometheus', 'Grafana'].map(s => <SkillBadge key={s} label={s} />)}
-        </div>
-        <div>
-          <p className="text-xs text-apple-mid-gray dark:text-dark-muted mb-1.5">Data & Messaging</p>
-          {['Kafka', 'Redis', 'MongoDB', 'MySQL', 'Hadoop', 'Spark'].map(s => <SkillBadge key={s} label={s} />)}
-        </div>
+      <div className="space-y-2">
+        <SkillRow category="Languages" skills={['Python', 'Bash']} />
+        <SkillRow category="Infrastructure" skills={['Kubernetes', 'Docker', 'Terraform', 'Nomad', 'Puppet', 'Jenkins']} />
+        <SkillRow category="Observability" skills={['Prometheus', 'Grafana']} />
+        <SkillRow category="Data & Messaging" skills={['Kafka', 'Redis', 'MongoDB', 'MySQL', 'Hadoop', 'Spark']} />
       </div>
     </div>
   </div>

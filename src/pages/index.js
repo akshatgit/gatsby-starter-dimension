@@ -19,23 +19,23 @@ export const Head = () => (
 
 const IndexPage = () => (
   <Layout>
-    <NavBar />
-    <SectionWrapper id="about" className="min-h-[calc(100vh-3.5rem)]">
+    <NavBar hideTopBar />
+    <SectionWrapper id="about" className="min-h-screen flex items-center">
       <About />
     </SectionWrapper>
     <SectionWrapper id="work" title="Work" gray>
       <Work />
     </SectionWrapper>
-    <SectionWrapper id="publications" title="Publications">
+    <SectionWrapper id="publications" title="Publications" className="min-h-screen flex items-center">
       <Publications />
     </SectionWrapper>
     <SectionWrapper id="service" title="Service" gray>
       <Service />
     </SectionWrapper>
-    <SectionWrapper id="contact" title="Contact" gray>
+    <SectionWrapper id="contact" title="Contact" className="min-h-screen flex items-center pt-24">
       <Contact />
     </SectionWrapper>
-    <Footer />
+    {/* <Footer /> */}
   </Layout>
 )
 

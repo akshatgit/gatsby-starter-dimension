@@ -32,7 +32,7 @@ const useDarkMode = () => {
   return [dark, toggle]
 }
 
-const NavBar = () => {
+const NavBar = ({ hideTopBar = false }) => {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('')
   const [dark, toggleDark] = useDarkMode()
@@ -56,7 +56,7 @@ const NavBar = () => {
   return (
     <>
       {/* ── Persistent top bar ── */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-between px-6 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-apple-border dark:border-dark-border transition-colors duration-300">
+      {!hideTopBar && <div className="fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-between px-6 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-apple-border dark:border-dark-border transition-colors duration-300">
         <a href="#" className="flex items-center gap-2 text-apple-dark-gray dark:text-dark-text font-semibold text-sm">
           <FiTerminal className="w-4 h-4 shrink-0" />
           <span>Akshat Sinha</span>
@@ -78,11 +78,11 @@ const NavBar = () => {
             {open ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
           </button>
         </div>
-      </div>
+      </div>}
 
       {/* ── Desktop sidebar ── */}
-      <aside className="hidden md:flex fixed top-14 left-0 w-56 flex-col justify-between pb-10 px-5 border-r border-apple-border dark:border-dark-border bg-white dark:bg-dark-bg z-40 transition-colors duration-300" style={{ height: 'calc(100vh - 3.5rem)' }}>
-        <nav className="pt-8">
+      <aside className={`hidden md:flex fixed left-0 w-56 flex-col justify-between pb-10 px-5 border-r border-apple-border dark:border-dark-border bg-white dark:bg-dark-bg z-40 transition-colors duration-300 ${hideTopBar ? 'top-0' : 'top-14'}`} style={{ height: hideTopBar ? '100vh' : 'calc(100vh - 3.5rem)' }}>
+        <nav className="pt-20 px-2">
           <ul className="space-y-1">
             {NAV_LINKS.map(({ label, href }) => (
               <li key={href}>
