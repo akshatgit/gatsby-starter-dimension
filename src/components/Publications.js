@@ -55,7 +55,7 @@ const articles = [
 ]
 
 const VenueBadge = ({ venue, year }) => (
-  <span className="inline-block text-xs font-medium text-apple-blue dark:text-dark-blue bg-apple-blue/10 dark:bg-dark-blue/10 px-2.5 py-0.5 rounded-full shrink-0">
+  <span className="inline-block self-start text-xs font-medium text-apple-blue bg-apple-blue/10 px-2.5 py-0.5 rounded-full shrink-0">
     {venue} '{year.slice(2)}
   </span>
 )

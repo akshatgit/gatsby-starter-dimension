@@ -96,15 +96,16 @@ const cveReviews = [
 const ProjectTag = ({ name }) => {
   const p = projects[name]
   const stars = useStars(p?.repo)
-  if (!p) return <p className="text-xs text-apple-mid-gray dark:text-dark-muted mt-0.5">{name}</p>
+  if (!p) return <span className="text-xs text-apple-mid-gray">{name}</span>
   return (
-    <a href={p.url} target="_blank" rel="noopener noreferrer" className="group inline-flex flex-col mt-0.5">
-      <span className="text-xs font-medium text-apple-dark-gray dark:text-dark-text group-hover:text-apple-blue dark:text-dark-blue transition-colors">{name}</span>
-      <span className="text-xs text-apple-mid-gray dark:text-dark-muted">{p.desc}</span>
+    <a href={p.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-apple-mid-gray hover:text-apple-blue transition-colors">
+      <span>{name}</span>
       {stars && (
-        <span className="inline-flex items-center gap-1 text-xs text-apple-mid-gray dark:text-dark-muted mt-0.5">
-          <FiStar className="w-3 h-3" />{stars} stars
-        </span>
+        <>
+          <span>·</span>
+          <FiStar className="w-3 h-3" />
+          <span>{stars}</span>
+        </>
       )}
     </a>
   )
@@ -113,16 +114,18 @@ const ProjectTag = ({ name }) => {
 
 const CveRow = ({ cve }) => (
   <div className="flex flex-col sm:flex-row sm:items-start gap-3 py-4 border-b border-apple-border dark:border-dark-border last:border-0">
-    <div className="sm:w-44 shrink-0">
-      <a
-        href={cve.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-sm font-mono text-apple-blue dark:text-dark-blue hover:underline"
-      >
-        {cve.id}
-      </a>
-      <ProjectTag name={cve.project} />
+    <div className="sm:w-52 shrink-0">
+      <div className="flex items-center gap-2 flex-wrap">
+        <a
+          href={cve.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-mono text-apple-blue dark:text-dark-blue hover:underline"
+        >
+          {cve.id}
+        </a>
+        <ProjectTag name={cve.project} />
+      </div>
     </div>
     <div className="flex-1">
       <p className="text-sm text-apple-mid-gray dark:text-dark-muted">{cve.desc}</p>
