@@ -28,12 +28,21 @@ const About = () => (
 
       {/* Col 1: Identity */}
       <div>
-        <p className="text-xs font-medium tracking-widest uppercase text-apple-mid-gray dark:text-dark-muted mb-2">
-          Senior Site Reliability Engineer
-        </p>
-        <h1 className="text-3xl font-semibold tracking-tight text-apple-dark-gray dark:text-dark-text mb-4">
-          Akshat Sinha
-        </h1>
+        <div className="flex items-center gap-4 mb-4">
+          <img
+            src="https://avatars.githubusercontent.com/u/11229971?s=96&v=4"
+            alt="Akshat Sinha"
+            className="w-14 h-14 rounded-full border border-apple-border dark:border-dark-border shrink-0"
+          />
+          <div>
+            <p className="text-xs font-medium tracking-widest uppercase text-apple-mid-gray dark:text-dark-muted mb-1">
+              Senior Site Reliability Engineer
+            </p>
+            <h1 className="text-3xl font-semibold tracking-tight text-apple-dark-gray dark:text-dark-text">
+              Akshat Sinha
+            </h1>
+          </div>
+        </div>
 
         <div className="flex flex-wrap gap-1.5 mb-4">
           {[
