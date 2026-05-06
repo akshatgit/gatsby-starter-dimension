@@ -45,9 +45,22 @@ const projects = {
     repo: 'libfuse/libfuse',
     url: 'https://github.com/libfuse/libfuse',
   },
+  vm2: {
+    desc: 'Sandbox library for running untrusted code in Node.js',
+    repo: 'patriksimek/vm2',
+    url: 'https://github.com/patriksimek/vm2',
+  },
 }
 
 const cveDiscoveries = [
+  {
+    id: 'CVE-2026-44007',
+    project: 'vm2',
+    severity: 'Critical',
+    score: '9.1',
+    desc: 'Sandbox escape to arbitrary OS command execution when NodeVM is created with nesting: true',
+    url: 'https://github.com/patriksimek/vm2/security/advisories/GHSA-8hg8-63c5-gwmx',
+  },
   {
     id: 'CVE-2026-33309',
     project: 'Langflow',
@@ -115,7 +128,7 @@ const ProjectTag = ({ name }) => {
 const CveRow = ({ cve }) => (
   <div className="flex flex-col sm:flex-row sm:items-start gap-3 py-4 border-b border-apple-border dark:border-dark-border last:border-0">
     <div className="sm:w-52 shrink-0">
-      <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex flex-col items-start gap-1">
         <a
           href={cve.url}
           target="_blank"

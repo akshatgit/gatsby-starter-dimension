@@ -22,6 +22,7 @@
 
 ## Security Research (CVE Discoveries)
 
+- CVE-2026-44007 (Critical, 9.1) — Sandbox escape to arbitrary OS command execution in vm2 when NodeVM is created with nesting: true
 - CVE-2026-33309 (Critical, 10.0) — Arbitrary file write via path traversal in Langflow v2 file upload API, enabling RCE
 - CVE-2026-33484 (High, 7.5) — Unauthenticated IDOR on image download endpoint in Langflow
 - CVE-2026-28786 (Moderate, 4.3) — Path traversal in Open WebUI audio transcription endpoint

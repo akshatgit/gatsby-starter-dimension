@@ -138,6 +138,12 @@ class Main extends React.Component {
               <th>Description</th>
             </tr>
             <tr>
+              <td><a href="https://github.com/patriksimek/vm2/security/advisories/GHSA-8hg8-63c5-gwmx">CVE-2026-44007</a></td>
+              <td>vm2</td>
+              <td>Critical (9.1)</td>
+              <td>Sandbox escape to arbitrary OS command execution when NodeVM is created with nesting: true</td>
+            </tr>
+            <tr>
               <td><a href="https://github.com/langflow-ai/langflow/security/advisories/GHSA-g2j9-7rj2-gm6c">CVE-2026-33309</a></td>
               <td>Langflow</td>
               <td>Critical (10.0)</td>
