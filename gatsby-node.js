@@ -1,7 +1,14 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require('path')
+const { cvePosts } = require('./src/data/cveData')
 
-// You can delete this file if you're not using it
+exports.createPages = async ({ actions }) => {
+  const { createPage } = actions
+
+  cvePosts.forEach((cve) => {
+    createPage({
+      path: `/blog/${cve.id.toLowerCase()}`,
+      component: path.resolve('./src/templates/cve-detail.js'),
+      context: { cve },
+    })
+  })
+}
