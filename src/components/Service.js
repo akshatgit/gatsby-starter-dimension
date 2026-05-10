@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { FiStar } from 'react-icons/fi'
+import { FiDownload, FiStar } from 'react-icons/fi'
 import { cvePosts } from '../data/cveData'
+
+const metricCache = new Map()
+
+const formatCompact = (value) => {
+  if (!value || value < 1000) return value ? String(value) : null
+  if (value >= 1000000)
+    return `${(value / 1000000).toFixed(1).replace(/\.0$/, '')}m`
+  return `${(value / 1000).toFixed(0)}k`
+}
 
 const useStars = (repo) => {
   const [stars, setStars] = useState(null)
@@ -16,6 +25,55 @@ const useStars = (repo) => {
       .catch(() => {})
   }, [repo])
   return stars
+}
+
+const useDownloadMetric = (registry, packageName, initialMetric = null) => {
+  const cacheKey = registry && packageName ? `${registry}:${packageName}` : null
+  const [metric, setMetric] = useState(() => {
+    if (cacheKey && metricCache.has(cacheKey)) return metricCache.get(cacheKey)
+    if (cacheKey && initialMetric) metricCache.set(cacheKey, initialMetric)
+    return initialMetric
+  })
+
+  useEffect(() => {
+    if (!registry || !packageName || metric !== null) return
+
+    const url =
+      registry === 'npm'
+        ? `https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(packageName)}&size=1`
+        : `https://pypistats.org/api/packages/${encodeURIComponent(packageName)}/recent`
+
+    fetch(url)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (!data) return
+
+        const nextMetric =
+          registry === 'npm'
+            ? data.objects?.[0]?.package?.name === packageName
+              ? {
+                  label: 'npm',
+                  title: 'npm monthly downloads',
+                  value: formatCompact(data.objects[0].downloads?.monthly),
+                }
+              : null
+            : data.data?.last_month
+              ? {
+                  label: 'PyPI',
+                  title: 'PyPI monthly downloads',
+                  value: formatCompact(data.data.last_month),
+                }
+              : null
+
+        if (nextMetric?.value) {
+          metricCache.set(cacheKey, nextMetric)
+          setMetric(nextMetric)
+        }
+      })
+      .catch(() => {})
+  }, [cacheKey, metric, packageName, registry])
+
+  return metric
 }
 
 const severityColors = {
@@ -38,11 +96,33 @@ const projects = {
     desc: 'Low-code AI agent & workflow builder',
     repo: 'langflow-ai/langflow',
     url: 'https://github.com/langflow-ai/langflow',
+    packageMetrics: [
+      {
+        registry: 'pypi',
+        packageName: 'langflow',
+        initialMetric: {
+          label: 'PyPI',
+          title: 'PyPI monthly downloads',
+          value: '102k',
+        },
+      },
+    ],
   },
   'Open WebUI': {
     desc: 'Self-hosted UI for local LLMs',
     repo: 'open-webui/open-webui',
     url: 'https://github.com/open-webui/open-webui',
+    packageMetrics: [
+      {
+        registry: 'pypi',
+        packageName: 'open-webui',
+        initialMetric: {
+          label: 'site',
+          title: 'Open WebUI site-reported downloads',
+          value: '290m',
+        },
+      },
+    ],
   },
   libfuse: {
     desc: 'Reference Linux FUSE implementation',
@@ -53,6 +133,17 @@ const projects = {
     desc: 'Sandbox library for running untrusted code in Node.js',
     repo: 'patriksimek/vm2',
     url: 'https://github.com/patriksimek/vm2',
+    packageMetrics: [
+      {
+        registry: 'npm',
+        packageName: 'vm2',
+        initialMetric: {
+          label: 'npm',
+          title: 'npm monthly downloads',
+          value: '6.1m',
+        },
+      },
+    ],
   },
 }
 
@@ -80,6 +171,11 @@ const cveReviews = [
 const ProjectTag = ({ name }) => {
   const p = projects[name]
   const stars = useStars(p?.repo)
+  const packageMetric = useDownloadMetric(
+    p?.packageMetrics?.[0]?.registry,
+    p?.packageMetrics?.[0]?.packageName,
+    p?.packageMetrics?.[0]?.initialMetric
+  )
   if (!p) return <span className="text-xs text-apple-mid-gray">{name}</span>
   return (
     <a
@@ -94,6 +190,13 @@ const ProjectTag = ({ name }) => {
           <span>·</span>
           <FiStar className="w-3 h-3" />
           <span>{stars}</span>
+        </>
+      )}
+      {packageMetric && (
+        <>
+          <span>·</span>
+          <FiDownload className="w-3 h-3" />
+          <span title={packageMetric.title}>{packageMetric.value}</span>
         </>
       )}
     </a>
@@ -121,7 +224,6 @@ const CveRow = ({ cve }) => (
       </p>
       {cve.coverage?.length > 0 && (
         <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-apple-mid-gray dark:text-dark-muted">
-          <span className="font-medium">Media:</span>
           {cve.coverage.map((item, index) => (
             <React.Fragment key={item.url}>
               {index > 0 && <span aria-hidden="true">·</span>}
