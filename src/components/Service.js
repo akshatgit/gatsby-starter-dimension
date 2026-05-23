@@ -145,6 +145,22 @@ const projects = {
       },
     ],
   },
+  'shell-quote': {
+    desc: 'Shell argument parser and quote utility for Node.js',
+    repo: 'ljharb/shell-quote',
+    url: 'https://github.com/ljharb/shell-quote',
+    packageMetrics: [
+      {
+        registry: 'npm',
+        packageName: 'shell-quote',
+        initialMetric: {
+          label: 'npm',
+          title: 'npm monthly downloads',
+          value: '219.3m',
+        },
+      },
+    ],
+  },
 }
 
 const cveDiscoveries = cvePosts

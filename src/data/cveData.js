@@ -1,5 +1,14 @@
 const cvePosts = [
   {
+    id: 'CVE-2026-9277',
+    project: 'shell-quote',
+    severity: 'High',
+    score: '8.1',
+    date: '2026-05-22',
+    desc: 'Shell command injection via unescaped newlines in quote() object .op values',
+    url: 'https://github.com/ljharb/shell-quote/security/advisories/GHSA-w7jw-789q-3m8p',
+  },
+  {
     id: 'CVE-2026-44007',
     project: 'vm2',
     severity: 'Critical',

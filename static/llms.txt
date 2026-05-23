@@ -22,6 +22,7 @@
 
 ## Security Research (CVE Discoveries)
 
+- CVE-2026-9277 (High, 8.1) — Shell command injection via unescaped newlines in shell-quote quote() object .op values
 - CVE-2026-44007 (Critical, 9.1) — Sandbox escape to arbitrary OS command execution in vm2 when NodeVM is created with nesting: true
   Media coverage: The Hacker News, CSO Online, ThreatAft, GBHackers, CyberPress, Mena CyberWire
 - CVE-2026-33309 (Critical, 10.0) — Arbitrary file write via path traversal in Langflow v2 file upload API, enabling RCE
