@@ -281,10 +281,15 @@ const Service = () => (
             role: 'Artifact Evaluation Committee Reviewer',
             url: 'https://mlsys26ae.hotcrp.com/users/pc',
           },
-        ].map(({ conf, role, url }) => (
+          {
+            conf: "OSDI '26",
+            role: 'Artifact Evaluation Committee Reviewer',
+            url: 'https://www.usenix.org/conference/osdi26/call-for-artifacts',
+          },
+        ].map(({ conf, url }) => (
           <div
             key={conf}
-            className="flex items-center justify-between border-b border-apple-border dark:border-dark-border pb-3 last:border-0"
+            className="border-b border-apple-border dark:border-dark-border pb-3 last:border-0"
           >
             <a
               href={url}
@@ -294,9 +299,6 @@ const Service = () => (
             >
               {conf}
             </a>
-            <span className="text-xs text-apple-mid-gray dark:text-dark-muted">
-              {role}
-            </span>
           </div>
         ))}
       </div>
