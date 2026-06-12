@@ -219,6 +219,28 @@ const ProjectTag = ({ name }) => {
   )
 }
 
+const DownstreamLabel = ({ cve }) => {
+  if (!cve.downstreamIds?.length) return null
+
+  return cve.downstreamIds.map((item) => (
+    <div
+      key={item.label}
+      className="text-xs text-apple-mid-gray dark:text-dark-muted"
+    >
+      <span>IBM-issued: </span>
+      <a
+        href={item.refs[0]?.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={item.refs[0]?.title}
+        className="text-apple-blue dark:text-dark-blue hover:underline"
+      >
+        {item.label.replace(/^IBM /, '')}
+      </a>
+    </div>
+  ))
+}
+
 const CveRow = ({ cve }) => (
   <div className="flex flex-col sm:flex-row sm:items-start gap-3 py-4 border-b border-apple-border dark:border-dark-border last:border-0">
     <div className="sm:w-52 shrink-0">
@@ -232,17 +254,37 @@ const CveRow = ({ cve }) => (
           {cve.id}
         </a>
         <ProjectTag name={cve.project} />
+        <DownstreamLabel cve={cve} />
       </div>
     </div>
     <div className="flex-1">
       <p className="text-sm text-apple-mid-gray dark:text-dark-muted">
         {cve.desc}
       </p>
-      {cve.coverage?.length > 0 && (
+      {(cve.downstreamIds?.length > 0 || cve.coverage?.length > 0) && (
         <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-apple-mid-gray dark:text-dark-muted">
-          {cve.coverage.map((item, index) => (
+          {cve.downstreamIds?.length > 0 && (
+            <>
+              <span>IBM Security</span>
+              {cve.downstreamIds.flatMap((item) => item.refs).map((ref) => (
+                <a
+                  key={ref.url}
+                  href={ref.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={ref.title}
+                  className="text-apple-blue dark:text-dark-blue hover:underline"
+                >
+                  {ref.tag}
+                </a>
+              ))}
+            </>
+          )}
+          {cve.coverage?.map((item, index) => (
             <React.Fragment key={item.url}>
-              {index > 0 && <span aria-hidden="true">·</span>}
+              {(index > 0 || cve.downstreamIds?.length > 0) && (
+                <span aria-hidden="true">·</span>
+              )}
               <a
                 href={item.url}
                 target="_blank"

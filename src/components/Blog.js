@@ -25,11 +25,63 @@ const BlogPostCard = ({ post }) => (
         <h3 className="text-base font-mono font-medium text-apple-dark-gray dark:text-dark-text group-hover:text-apple-blue dark:group-hover:text-dark-blue transition-colors">
           {post.id}
         </h3>
-        <p className="text-xs text-apple-mid-gray dark:text-dark-muted mt-1">{post.project} · {post.date}</p>
+        <p className="text-xs text-apple-mid-gray dark:text-dark-muted mt-1">
+          {post.project}
+          {post.date ? ` · ${post.date}` : ''}
+        </p>
       </div>
       <SeverityBadge level={post.severity} score={post.score} />
     </div>
     <p className="text-sm text-apple-mid-gray dark:text-dark-muted mb-4 line-clamp-2">{post.desc}</p>
+    {post.downstreamIds?.length > 0 && (
+      <p className="text-xs text-apple-mid-gray dark:text-dark-muted mb-4">
+        {post.downstreamIds.map((item, index) => (
+          <React.Fragment key={item.label}>
+            {index > 0 ? ' · ' : ''}
+            <span>IBM-issued: </span>
+            <a
+              href={item.refs[0]?.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={item.refs[0]?.title}
+              className="text-apple-blue dark:text-dark-blue hover:underline"
+              onClick={(event) => event.stopPropagation()}
+            >
+              {item.label.replace(/^IBM /, '')}
+            </a>
+          </React.Fragment>
+        ))}
+      </p>
+    )}
+    {(post.downstreamIds?.length > 0 || post.coverage?.length > 0) && (
+      <p className="text-xs text-apple-mid-gray dark:text-dark-muted mb-4">
+        {post.downstreamIds?.length > 0 && (
+          <>
+            <span>IBM Security </span>
+            {post.downstreamIds.flatMap((item) => item.refs).map((ref) => (
+              <React.Fragment key={ref.url}>
+                <a
+                  href={ref.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={ref.title}
+                  className="text-apple-blue dark:text-dark-blue hover:underline"
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  {ref.tag}
+                </a>
+              </React.Fragment>
+            ))}
+          </>
+        )}
+        {post.coverage?.map((item, index) => (
+          <React.Fragment key={item.url}>
+            {(index > 0 || post.downstreamIds?.length > 0) ? ' · ' : ''}
+            <span>{item.outlet}</span>
+          </React.Fragment>
+        ))}
+      </p>
+    )}
     <div className="flex items-center gap-1 text-xs text-apple-blue dark:text-dark-blue font-medium">
       Read more <FiArrowRight className="w-3 h-3" />
     </div>

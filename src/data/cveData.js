@@ -44,13 +44,39 @@ const cvePosts = [
     ],
   },
   {
+    id: 'CVE-2026-33760',
+    project: 'Langflow',
+    severity: 'High',
+    score: '8.8',
+    date: '2026-04-11',
+    desc: 'IDOR/BOLA in seven monitor API endpoints allowed unauthorized read, write, and delete operations on sessions, messages, build artifacts, and LLM transaction logs.',
+    url: 'https://github.com/langflow-ai/langflow/security/advisories/GHSA-9c59-2mvc-vfr8',
+  },
+  {
     id: 'CVE-2026-33309',
     project: 'Langflow',
     severity: 'Critical',
     score: '10.0',
     date: '2026-03-15',
-    desc: 'Arbitrary file write via path traversal in v2 file upload API, enabling Remote Code Execution',
+    desc: 'Arbitrary file write via path traversal in the v2 file upload API enabled remote code execution through a multipart filename bypass.',
     url: 'https://github.com/langflow-ai/langflow/security/advisories/GHSA-g2j9-7rj2-gm6c',
+    downstreamIds: [
+      {
+        label: 'IBM CVE-2026-4502',
+        refs: [
+          {
+            tag: '[1]',
+            url: 'https://www.ibm.com/support/pages/node/7271101',
+            title: 'IBM Langflow OSS bulletin',
+          },
+          {
+            tag: '[2]',
+            url: 'https://www.ibm.com/support/pages/node/7271097',
+            title: 'IBM Langflow Desktop bulletin',
+          },
+        ],
+      },
+    ],
     coverage: [
       {
         outlet: 'SANS @Risk Newsletter',
@@ -65,14 +91,6 @@ const cvePosts = [
         url: 'https://cyble.com/blog/cyble-weekly-vulnerabilities-report-apr-01/',
       },
       {
-        outlet: 'SecurityOnline',
-        url: 'https://securityonline.info/critical-langflow-vulnerabilities-rce-file-write-cve-2026-33017/',
-      },
-      {
-        outlet: 'Fyntralink',
-        url: 'https://fyntralink.com/en/blog/langflow-cve-2026-33017-ai-saudi-banks-sama/',
-      },
-      {
         outlet: 'Endor Labs',
         url: 'https://www.endorlabs.com/vulnerability/cve-2026-33309',
       },
@@ -84,8 +102,25 @@ const cvePosts = [
     severity: 'High',
     score: '7.5',
     date: '2026-02-28',
-    desc: 'Unauthenticated IDOR on image download endpoint allowing data exposure in multi-tenant deployments',
+    desc: 'Unauthenticated IDOR on the image download endpoint allowed cross-tenant exfiltration via flow_id enumeration and missing ownership checks.',
     url: 'https://github.com/langflow-ai/langflow/security/advisories/GHSA-7grx-3xcx-2xv5',
+    downstreamIds: [
+      {
+        label: 'IBM CVE-2026-4503',
+        refs: [
+          {
+            tag: '[1]',
+            url: 'https://www.ibm.com/support/pages/node/7270882',
+            title: 'IBM Langflow OSS bulletin',
+          },
+          {
+            tag: '[2]',
+            url: 'https://www.ibm.com/support/pages/node/7271099',
+            title: 'IBM Langflow Desktop bulletin',
+          },
+        ],
+      },
+    ],
     coverage: [
       {
         outlet: 'Heise Security',
