@@ -9,6 +9,15 @@ const cvePosts = [
     url: 'https://github.com/ljharb/shell-quote/security/advisories/GHSA-w7jw-789q-3m8p',
   },
   {
+    id: 'CVE-2026-7874',
+    project: 'Langflow',
+    severity: 'Critical',
+    score: '9.1',
+    date: '2026-06-30',
+    desc: 'Weak and reversible key derivation for credential encryption exposed all stored API keys, database passwords, and OAuth tokens once the secret key was obtained.',
+    url: 'https://www.ibm.com/support/pages/node/7278447',
+  },
+  {
     id: 'CVE-2026-44007',
     project: 'vm2',
     severity: 'Critical',
