@@ -163,7 +163,11 @@ const projects = {
   },
 }
 
-const cveDiscoveries = cvePosts
+const projectOrder = ['Langflow', 'shell-quote', 'vm2', 'Open WebUI']
+const discoveryGroups = projectOrder.map((project) => ({
+  project,
+  cves: cvePosts.filter((cve) => cve.project === project),
+}))
 
 const cveReviews = [
   {
@@ -184,7 +188,7 @@ const cveReviews = [
   },
 ]
 
-const ProjectTag = ({ name }) => {
+const ProjectTag = ({ name, heading = false }) => {
   const p = projects[name]
   const stars = useStars(p?.repo)
   const packageMetric = useDownloadMetric(
@@ -198,7 +202,7 @@ const ProjectTag = ({ name }) => {
       href={p.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1 text-xs text-apple-mid-gray hover:text-apple-blue transition-colors"
+      className={`inline-flex items-center gap-1 ${heading ? 'text-sm font-medium text-apple-dark-gray dark:text-dark-text' : 'text-xs text-apple-mid-gray'} hover:text-apple-blue transition-colors`}
     >
       <span>{name}</span>
       {stars && (
@@ -241,7 +245,7 @@ const DownstreamLabel = ({ cve }) => {
   ))
 }
 
-const CveRow = ({ cve }) => (
+const CveRow = ({ cve, showProject = true }) => (
   <div className="flex flex-col sm:flex-row sm:items-start gap-3 py-4 border-b border-apple-border dark:border-dark-border last:border-0">
     <div className="sm:w-52 shrink-0">
       <div className="flex flex-col items-start gap-1">
@@ -253,7 +257,7 @@ const CveRow = ({ cve }) => (
         >
           {cve.id}
         </a>
-        <ProjectTag name={cve.project} />
+        {showProject && <ProjectTag name={cve.project} />}
         <DownstreamLabel cve={cve} />
       </div>
     </div>
@@ -261,7 +265,9 @@ const CveRow = ({ cve }) => (
       <p className="text-sm text-apple-mid-gray dark:text-dark-muted">
         {cve.desc}
       </p>
-      {(cve.downstreamIds?.length > 0 || cve.coverage?.length > 0) && (
+      {(cve.downstreamIds?.length > 0 ||
+        cve.references?.length > 0 ||
+        cve.coverage?.length > 0) && (
         <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-apple-mid-gray dark:text-dark-muted">
           {cve.downstreamIds?.length > 0 && (
             <>
@@ -280,9 +286,26 @@ const CveRow = ({ cve }) => (
               ))}
             </>
           )}
-          {cve.coverage?.map((item, index) => (
+          {cve.references?.map((item, index) => (
             <React.Fragment key={item.url}>
               {(index > 0 || cve.downstreamIds?.length > 0) && (
+                <span aria-hidden="true">·</span>
+              )}
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-apple-blue dark:text-dark-blue hover:underline"
+              >
+                {item.label}
+              </a>
+            </React.Fragment>
+          ))}
+          {cve.coverage?.map((item, index) => (
+            <React.Fragment key={item.url}>
+              {(index > 0 ||
+                cve.downstreamIds?.length > 0 ||
+                cve.references?.length > 0) && (
                 <span aria-hidden="true">·</span>
               )}
               <a
@@ -352,8 +375,15 @@ const Service = () => (
         CVE Discoveries
       </h3>
       <div>
-        {cveDiscoveries.map((cve) => (
-          <CveRow key={cve.id} cve={cve} />
+        {discoveryGroups.map(({ project, cves }, index) => (
+          <section key={project} className={index > 0 ? 'pt-6' : 'pt-1'}>
+            <h4 className="pb-1">
+              <ProjectTag name={project} heading />
+            </h4>
+            {cves.map((cve) => (
+              <CveRow key={cve.id} cve={cve} showProject={false} />
+            ))}
+          </section>
         ))}
       </div>
     </div>

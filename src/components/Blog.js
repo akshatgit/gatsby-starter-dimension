@@ -9,6 +9,12 @@ const severityColors = {
   'Moderate': 'bg-yellow-50 dark:bg-yellow-950/40 text-yellow-700 dark:text-yellow-400',
 }
 
+const projectOrder = ['Langflow', 'shell-quote', 'vm2', 'Open WebUI']
+const postGroups = projectOrder.map((project) => ({
+  project,
+  posts: cvePosts.filter((post) => post.project === project),
+}))
+
 const SeverityBadge = ({ level, score }) => (
   <span className={`inline-block text-xs font-medium px-2.5 py-0.5 rounded-full ${severityColors[level]}`}>
     {level} {score}
@@ -53,7 +59,7 @@ const BlogPostCard = ({ post }) => (
         ))}
       </p>
     )}
-    {(post.downstreamIds?.length > 0 || post.coverage?.length > 0) && (
+    {(post.downstreamIds?.length > 0 || post.references?.length > 0 || post.coverage?.length > 0) && (
       <p className="text-xs text-apple-mid-gray dark:text-dark-muted mb-4">
         {post.downstreamIds?.length > 0 && (
           <>
@@ -74,10 +80,32 @@ const BlogPostCard = ({ post }) => (
             ))}
           </>
         )}
-        {post.coverage?.map((item, index) => (
+        {post.references?.map((item, index) => (
           <React.Fragment key={item.url}>
             {(index > 0 || post.downstreamIds?.length > 0) ? ' · ' : ''}
-            <span>{item.outlet}</span>
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-apple-blue dark:text-dark-blue hover:underline"
+              onClick={(event) => event.stopPropagation()}
+            >
+              {item.label}
+            </a>
+          </React.Fragment>
+        ))}
+        {post.coverage?.map((item, index) => (
+          <React.Fragment key={item.url}>
+            {(index > 0 || post.downstreamIds?.length > 0 || post.references?.length > 0) ? ' · ' : ''}
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-apple-blue dark:text-dark-blue hover:underline"
+              onClick={(event) => event.stopPropagation()}
+            >
+              {item.outlet}
+            </a>
           </React.Fragment>
         ))}
       </p>
@@ -90,9 +118,16 @@ const BlogPostCard = ({ post }) => (
 
 const Blog = () => (
   <div>
-    <div className="grid gap-4 md:grid-cols-2">
-      {cvePosts.map(post => <BlogPostCard key={post.id} post={post} />)}
-    </div>
+    {postGroups.map(({ project, posts }, index) => (
+      <section key={project} className={index > 0 ? 'mt-8' : undefined}>
+        <h3 className="text-sm font-medium text-apple-dark-gray dark:text-dark-text mb-4">
+          {project}
+        </h3>
+        <div className="grid gap-4 md:grid-cols-2">
+          {posts.map(post => <BlogPostCard key={post.id} post={post} />)}
+        </div>
+      </section>
+    ))}
   </div>
 )
 

@@ -16,6 +16,12 @@ const cvePosts = [
     date: '2026-06-30',
     desc: 'Weak and reversible key derivation for credential encryption exposed all stored API keys, database passwords, and OAuth tokens once the secret key was obtained.',
     url: 'https://www.ibm.com/support/pages/node/7278447',
+    references: [
+      {
+        label: 'IBM Security Bulletin',
+        url: 'https://www.ibm.com/support/pages/node/7278447',
+      },
+    ],
   },
   {
     id: 'CVE-2026-44007',
