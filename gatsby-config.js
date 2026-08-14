@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     title: 'Akshat Sinha',
     author: 'Akshat Sinha',
-    description: 'Senior Site Reliability Engineer at Rubrik. Network security professional.',
+    description:
+      'Senior Site Reliability Engineer at Rubrik. Network security professional.',
     siteUrl: 'https://akshatsinha.xyz',
   },
   plugins: [
@@ -24,9 +25,9 @@ module.exports = {
         short_name: 'Akshat',
         start_url: '/',
         background_color: '#ffffff',
-        theme_color: '#ffffff',
+        theme_color: '#071426',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png',
+        icon: 'src/images/logo.png',
       },
     },
   ],

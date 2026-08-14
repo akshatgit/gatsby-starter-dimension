@@ -12,7 +12,10 @@ import Footer from '../components/Footer'
 export const Head = () => (
   <>
     <title>Akshat Sinha</title>
-    <meta name="description" content="Senior Site Reliability Engineer at Rubrik. Network security professional." />
+    <meta
+      name="description"
+      content="Senior Site Reliability Engineer at Rubrik. Network security professional."
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </>
 )
@@ -26,13 +29,21 @@ const IndexPage = () => (
     <SectionWrapper id="work" title="Work" gray>
       <Work />
     </SectionWrapper>
-    <SectionWrapper id="publications" title="Publications" className="min-h-screen flex items-center">
+    <SectionWrapper
+      id="publications"
+      title="Publications"
+      className="min-h-screen flex items-center"
+    >
       <Publications />
     </SectionWrapper>
     <SectionWrapper id="service" title="Service" gray>
       <Service />
     </SectionWrapper>
-    <SectionWrapper id="contact" title="Contact" className="min-h-screen flex items-center pt-24">
+    <SectionWrapper
+      id="contact"
+      title="Contact"
+      className="min-h-screen flex items-center pt-24"
+    >
       <Contact />
     </SectionWrapper>
     {/* <Footer /> */}
