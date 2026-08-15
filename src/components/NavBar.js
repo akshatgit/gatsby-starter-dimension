@@ -23,6 +23,7 @@ const NAV_LINKS = [
 const NavBar = ({ hideTopBar = false }) => {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('')
+  const [logoOpen, setLogoOpen] = useState(false)
 
   useEffect(() => {
     const sections = NAV_LINKS.map((l) => document.querySelector(l.href))
@@ -38,6 +39,23 @@ const NavBar = ({ hideTopBar = false }) => {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    if (!logoOpen) return undefined
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setLogoOpen(false)
+    }
+    const previousOverflow = document.body.style.overflow
+
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [logoOpen])
+
   const topIconBtn =
     'text-apple-mid-gray hover:text-apple-dark-gray transition-colors'
   const sidebarIconBtn =
@@ -49,20 +67,23 @@ const NavBar = ({ hideTopBar = false }) => {
       <div
         className={`fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-between px-6 bg-white/80 backdrop-blur-md border-b border-apple-border transition-colors duration-300 ${hideTopBar ? 'md:hidden' : ''}`}
       >
-        <a
-          href="#"
-          className="flex items-center gap-2 text-apple-dark-gray font-semibold text-sm"
+        <button
+          type="button"
+          onClick={() => setLogoOpen(true)}
+          aria-label="View Akshat Sinha logo"
+          aria-haspopup="dialog"
+          className="group flex items-center gap-2 rounded-full text-apple-dark-gray font-semibold text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-apple-blue focus-visible:ring-offset-2"
         >
           <StaticImage
             src="../images/logo.png"
             alt=""
             width={30}
             height={30}
-            className="shrink-0 rounded-full"
+            className="shrink-0 rounded-full transition-transform duration-200 group-hover:scale-105"
             placeholder="blurred"
           />
           <span>Akshat Sinha</span>
-        </a>
+        </button>
 
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-4">
@@ -118,20 +139,23 @@ const NavBar = ({ hideTopBar = false }) => {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-950/35 via-slate-950/70 to-slate-950/95" />
 
         <div className="relative z-10">
-          <a
-            href="#about"
-            className="flex items-center justify-center pt-8 text-white"
+          <button
+            type="button"
+            onClick={() => setLogoOpen(true)}
+            aria-label="View Akshat Sinha logo"
+            aria-haspopup="dialog"
+            className="group flex items-center justify-center rounded-full pt-8 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
           >
             <StaticImage
               src="../images/logo.png"
               alt="Akshat Sinha logo"
               width={56}
               height={56}
-              className="shrink-0 rounded-full bg-slate-950/50 shadow-lg ring-1 ring-white/30"
+              className="shrink-0 rounded-full bg-slate-950/50 shadow-lg ring-1 ring-white/30 transition-all duration-200 group-hover:scale-105 group-hover:ring-white/60"
               placeholder="blurred"
             />
             <span className="sr-only">Akshat Sinha</span>
-          </a>
+          </button>
 
           <nav className="mt-10">
             <ul className="space-y-1">
@@ -202,6 +226,38 @@ const NavBar = ({ hideTopBar = false }) => {
           ))}
         </ul>
       </div>
+
+      {logoOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-6 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Akshat Sinha logo"
+          onClick={() => setLogoOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setLogoOpen(false)}
+              className="absolute -right-2 -top-2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-apple-dark-gray shadow-xl transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-apple-blue"
+              aria-label="Close logo"
+            >
+              <FiX className="h-5 w-5" />
+            </button>
+            <StaticImage
+              src="../images/logo.png"
+              alt="Akshat Sinha logo"
+              width={720}
+              className="w-full rounded-full drop-shadow-2xl"
+              placeholder="blurred"
+              quality={95}
+            />
+          </div>
+        </div>
+      )}
     </>
   )
 }
