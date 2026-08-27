@@ -36,8 +36,10 @@
 
 ## Service
 
+- Artifact Evaluation Committee Reviewer — SOSP 2026
 - Artifact Evaluation Committee Reviewer — OOPSLA 2026
 - Artifact Evaluation Committee Reviewer — MLSys 2026
+- Artifact Evaluation Committee Reviewer — OSDI 2026
 
 ## Skills
 

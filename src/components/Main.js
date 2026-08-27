@@ -124,8 +124,10 @@ class Main extends React.Component {
 
           <h3>Artifact Reviewing</h3>
           <ul>
+            <li><strong>SOSP '26</strong> — Artifact Evaluation Committee Reviewer</li>
             <li><strong>OOPSLA 2026</strong> — Artifact Evaluation Committee Reviewer</li>
             <li><strong>MLSys 2026</strong> — Artifact Evaluation Committee Reviewer</li>
+            <li><strong>OSDI '26</strong> — Artifact Evaluation Committee Reviewer</li>
           </ul>
 
           <h3>CVE Discoveries</h3>

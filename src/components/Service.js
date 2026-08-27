@@ -337,6 +337,11 @@ const Service = () => (
       <div className="space-y-3">
         {[
           {
+            conf: "SOSP '26",
+            role: 'Artifact Evaluation Committee Reviewer',
+            url: 'https://sosp26ae.hotcrp.com/users/pc',
+          },
+          {
             conf: 'OOPSLA 2026',
             role: 'Artifact Evaluation Committee Reviewer',
             url: 'https://2026.splashcon.org/track/splash-2026-artifact-evaluation',
