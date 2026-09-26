@@ -92,6 +92,11 @@ const SeverityBadge = ({ level, score }) => (
 )
 
 const projects = {
+  Flowise: {
+    desc: 'Low-code platform for building AI agents and workflows',
+    repo: 'FlowiseAI/Flowise',
+    url: 'https://github.com/FlowiseAI/Flowise',
+  },
   Langflow: {
     desc: 'Low-code AI agent & workflow builder',
     repo: 'langflow-ai/langflow',
@@ -163,7 +168,7 @@ const projects = {
   },
 }
 
-const projectOrder = ['Langflow', 'shell-quote', 'vm2', 'Open WebUI']
+const projectOrder = ['Flowise', 'Langflow', 'shell-quote', 'vm2', 'Open WebUI']
 const discoveryGroups = projectOrder.map((project) => ({
   project,
   cves: cvePosts.filter((cve) => cve.project === project),
@@ -374,10 +379,68 @@ const Service = () => (
       </div>
     </div>
 
-    {/* CVE Discoveries */}
+    {/* Hackathon Judging */}
+    <div>
+      <h3 className="text-xs font-medium tracking-widest uppercase text-apple-mid-gray dark:text-dark-muted mb-5">
+        Hackathon Judging
+      </h3>
+      <div className="space-y-3">
+        {[
+          {
+            event: 'WeAreDevelopers Hackathon',
+            url: 'https://lablab.ai/ai-hackathons/wearedevelopers-hackathon',
+          },
+          {
+            event: 'AI Infra Summit Hackathon',
+            url: 'https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon',
+            certificate: '/certificates/ai-infra-summit-hackathon.pdf',
+            certificatePreview:
+              '/certificates/ai-infra-summit-hackathon-preview.png',
+          },
+        ].map(({ event, url, certificate, certificatePreview }) => (
+          <div
+            key={event}
+            className="flex items-center justify-between gap-4 border-b border-apple-border dark:border-dark-border pb-3 last:border-0"
+          >
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-apple-blue dark:text-dark-blue hover:underline transition-colors"
+            >
+              {event}
+            </a>
+            {certificate && (
+              <span className="group relative shrink-0 text-xs">
+                <a
+                  href={certificate}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-apple-mid-gray dark:text-dark-muted hover:text-apple-blue dark:hover:text-dark-blue hover:underline transition-colors"
+                >
+                  Certificate
+                </a>
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none invisible absolute bottom-full right-0 z-20 mb-3 w-56 translate-y-1 rounded-xl border border-apple-border bg-white p-2 opacity-0 shadow-2xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 dark:border-dark-border dark:bg-dark-elevated sm:w-64"
+                >
+                  <img
+                    src={certificatePreview}
+                    alt=""
+                    className="block h-auto w-full rounded-lg"
+                  />
+                </span>
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Vulnerability Discoveries */}
     <div>
       <h3 className="text-xs font-medium tracking-widest uppercase text-apple-mid-gray dark:text-dark-muted mb-4">
-        CVE Discoveries
+        Vulnerability Discoveries
       </h3>
       <div>
         {discoveryGroups.map(({ project, cves }, index) => (

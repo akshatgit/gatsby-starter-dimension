@@ -20,8 +20,9 @@
 - "Where The Light Gets In: Analyzing Web Censorship Mechanisms in India" — IMC 2018
 - "Deep Neural Networks for Segmentation of Basal Ganglia Sub-Structures in Brain MR Images" — ICVGIP 2016
 
-## Security Research (CVE Discoveries)
+## Security Research (Vulnerability Discoveries)
 
+- GHSA-27w2-26m5-x82c (High, 7.6; no CVE assigned) — Cross-workspace credential IDOR in Flowise exposed other workspaces' OpenAI and ElevenLabs API keys
 - CVE-2026-9277 (High, 8.1) — Shell command injection via unescaped newlines in shell-quote quote() object .op values
 - CVE-2026-44007 (Critical, 9.1) — Sandbox escape to arbitrary OS command execution in vm2 when NodeVM is created with nesting: true
   Media coverage: The Hacker News, CSO Online, ThreatAft, GBHackers, CyberPress, Mena CyberWire
@@ -40,6 +41,8 @@
 - Artifact Evaluation Committee Reviewer — OOPSLA 2026
 - Artifact Evaluation Committee Reviewer — MLSys 2026
 - Artifact Evaluation Committee Reviewer — OSDI 2026
+- Hackathon Judge — [WeAreDevelopers Hackathon](https://lablab.ai/ai-hackathons/wearedevelopers-hackathon)
+- Hackathon Judge — [AI Infra Summit Hackathon](https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon) ([certificate](/certificates/ai-infra-summit-hackathon.pdf))
 
 ## Skills
 

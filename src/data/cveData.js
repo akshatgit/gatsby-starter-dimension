@@ -1,5 +1,14 @@
 const cvePosts = [
   {
+    id: 'GHSA-27w2-26m5-x82c',
+    project: 'Flowise',
+    severity: 'High',
+    score: '7.6',
+    date: '2026-09-10',
+    desc: "Cross-workspace credential IDOR allowed authenticated users to decrypt and use other workspaces' OpenAI or ElevenLabs API keys by supplying a foreign credential UUID.",
+    url: 'https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-27w2-26m5-x82c',
+  },
+  {
     id: 'CVE-2026-9277',
     project: 'shell-quote',
     severity: 'High',

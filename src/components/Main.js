@@ -130,14 +130,26 @@ class Main extends React.Component {
             <li><strong>OSDI '26</strong> — Artifact Evaluation Committee Reviewer</li>
           </ul>
 
-          <h3>CVE Discoveries</h3>
+          <h3>Hackathon Judging</h3>
+          <ul>
+            <li><a href="https://lablab.ai/ai-hackathons/wearedevelopers-hackathon"><strong>WeAreDevelopers Hackathon</strong></a> — Judge</li>
+            <li><a href="https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon"><strong>AI Infra Summit Hackathon</strong></a> — Judge · <a href="/certificates/ai-infra-summit-hackathon.pdf">Certificate</a></li>
+          </ul>
+
+          <h3>Vulnerability Discoveries</h3>
           <p>Identified and responsibly disclosed security vulnerabilities in open source AI/ML projects:</p>
           <table>
             <tr>
-              <th>CVE</th>
+              <th>Advisory</th>
               <th>Project</th>
               <th>Severity</th>
               <th>Description</th>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-27w2-26m5-x82c">GHSA-27w2-26m5-x82c</a></td>
+              <td>Flowise</td>
+              <td>High (7.6)</td>
+              <td>Cross-workspace credential IDOR allowed authenticated users to decrypt and use other workspaces' OpenAI or ElevenLabs API keys</td>
             </tr>
             <tr>
               <td><a href="https://github.com/patriksimek/vm2/security/advisories/GHSA-8hg8-63c5-gwmx">CVE-2026-44007</a></td>

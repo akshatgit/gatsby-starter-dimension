@@ -9,7 +9,7 @@ const severityColors = {
   'Moderate': 'bg-yellow-50 dark:bg-yellow-950/40 text-yellow-700 dark:text-yellow-400',
 }
 
-const projectOrder = ['Langflow', 'shell-quote', 'vm2', 'Open WebUI']
+const projectOrder = ['Flowise', 'Langflow', 'shell-quote', 'vm2', 'Open WebUI']
 const postGroups = projectOrder.map((project) => ({
   project,
   posts: cvePosts.filter((post) => post.project === project),
