@@ -146,7 +146,7 @@ class Main extends React.Component {
               <th>Description</th>
             </tr>
             <tr>
-              <td><a href="https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-27w2-26m5-x82c">GHSA-27w2-26m5-x82c</a></td>
+              <td><a href="https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-27w2-26m5-x82c">CVE-2026-100609</a></td>
               <td>Flowise</td>
               <td>High (7.6)</td>
               <td>Cross-workspace credential IDOR allowed authenticated users to decrypt and use other workspaces' OpenAI or ElevenLabs API keys</td>

@@ -22,7 +22,8 @@
 
 ## Security Research (Vulnerability Discoveries)
 
-- GHSA-27w2-26m5-x82c (High, 7.6; no CVE assigned) — Cross-workspace credential IDOR in Flowise exposed other workspaces' OpenAI and ElevenLabs API keys
+- CVE-2026-100609 (High, 7.6; GHSA-27w2-26m5-x82c) — Cross-workspace credential IDOR in Flowise exposed other workspaces' OpenAI and ElevenLabs API keys
+  Published coverage: CSIRT Toscana, Severity Daily, The Loop, Agenccy.ai, 365TRUST
 - CVE-2026-9277 (High, 8.1) — Shell command injection via unescaped newlines in shell-quote quote() object .op values
 - CVE-2026-44007 (Critical, 9.1) — Sandbox escape to arbitrary OS command execution in vm2 when NodeVM is created with nesting: true
   Media coverage: The Hacker News, CSO Online, ThreatAft, GBHackers, CyberPress, Mena CyberWire

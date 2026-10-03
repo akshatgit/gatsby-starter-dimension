@@ -1,12 +1,35 @@
 const cvePosts = [
   {
-    id: 'GHSA-27w2-26m5-x82c',
+    id: 'CVE-2026-100609',
     project: 'Flowise',
     severity: 'High',
     score: '7.6',
     date: '2026-09-10',
     desc: "Cross-workspace credential IDOR allowed authenticated users to decrypt and use other workspaces' OpenAI or ElevenLabs API keys by supplying a foreign credential UUID.",
     url: 'https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-27w2-26m5-x82c',
+    aliases: ['GHSA-27w2-26m5-x82c'],
+    coverage: [
+      {
+        outlet: 'CSIRT Toscana',
+        url: 'https://csirt.regione.toscana.it/flowiseai-poc-pubbliche-per-lo-sfruttamento-di-6-vulnerabilita-al03-260928-csirt-ita/',
+      },
+      {
+        outlet: 'Severity Daily',
+        url: 'https://severitydaily.com/flowise-cve-2026-100606-sso-invitation-token-self-validated-repository-archived/',
+      },
+      {
+        outlet: 'The Loop',
+        url: 'https://theloop.techdani.cc/posts/the-patch-2026-09-27',
+      },
+      {
+        outlet: 'Agenccy.ai',
+        url: 'https://agenccy.ai/news/flowise-six-cves-patched-version-none/',
+      },
+      {
+        outlet: '365TRUST',
+        url: 'https://365trust.me/flowiseai-poc-pubbliche-per-lo-sfruttamento-di-6-vulnerabilita-al03-260928-csirt-ita/',
+      },
+    ],
   },
   {
     id: 'CVE-2026-9277',
