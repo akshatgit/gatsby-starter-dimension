@@ -1,5 +1,26 @@
 const cvePosts = [
   {
+    id: 'GHSA-g3ff-q88g-chrj',
+    project: 'Argo CD',
+    severity: 'Moderate',
+    score: '4.9',
+    date: '2026-10-07',
+    desc: 'Extension proxy RBAC omitted the application namespace when applications-in-any-namespace was enabled, allowing cross-namespace extension access within the same project.',
+    url: 'https://github.com/argoproj/argo-cd/security/advisories/GHSA-g3ff-q88g-chrj',
+    references: [
+      {
+        label: 'Argo CD v3.5.4 release notes',
+        url: 'https://github.com/argoproj/argo-cd/releases/tag/v3.5.4',
+      },
+    ],
+    coverage: [
+      {
+        outlet: 'Suriq',
+        url: 'https://suriq.io/blog/argo-cd-coordinated-security-release-four-critical',
+      },
+    ],
+  },
+  {
     id: 'CVE-2026-100609',
     project: 'Flowise',
     severity: 'High',

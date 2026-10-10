@@ -92,6 +92,11 @@ const SeverityBadge = ({ level, score }) => (
 )
 
 const projects = {
+  'Argo CD': {
+    desc: 'Declarative GitOps continuous delivery for Kubernetes',
+    repo: 'argoproj/argo-cd',
+    url: 'https://github.com/argoproj/argo-cd',
+  },
   Flowise: {
     desc: 'Low-code platform for building AI agents and workflows',
     repo: 'FlowiseAI/Flowise',
@@ -168,7 +173,7 @@ const projects = {
   },
 }
 
-const projectOrder = ['Flowise', 'Langflow', 'shell-quote', 'vm2', 'Open WebUI']
+const projectOrder = ['Argo CD', 'Flowise', 'Langflow', 'shell-quote', 'vm2', 'Open WebUI']
 const discoveryGroups = projectOrder.map((project) => ({
   project,
   cves: cvePosts.filter((cve) => cve.project === project),

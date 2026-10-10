@@ -22,6 +22,8 @@
 
 ## Security Research (Vulnerability Discoveries)
 
+- GHSA-g3ff-q88g-chrj (Moderate, 4.9; no CVE assigned) — Extension proxy RBAC namespace omission in Argo CD allowed cross-namespace access when applications-in-any-namespace was enabled
+  Published coverage: Suriq
 - CVE-2026-100609 (High, 7.6; GHSA-27w2-26m5-x82c) — Cross-workspace credential IDOR in Flowise exposed other workspaces' OpenAI and ElevenLabs API keys
   Published coverage: CSIRT Toscana, Severity Daily, The Loop, Agenccy.ai, 365TRUST
 - CVE-2026-9277 (High, 8.1) — Shell command injection via unescaped newlines in shell-quote quote() object .op values

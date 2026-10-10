@@ -137,13 +137,19 @@ class Main extends React.Component {
           </ul>
 
           <h3>Vulnerability Discoveries</h3>
-          <p>Identified and responsibly disclosed security vulnerabilities in open source AI/ML projects:</p>
+          <p>Identified and responsibly disclosed security vulnerabilities in open source projects:</p>
           <table>
             <tr>
               <th>Advisory</th>
               <th>Project</th>
               <th>Severity</th>
               <th>Description</th>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/argoproj/argo-cd/security/advisories/GHSA-g3ff-q88g-chrj">GHSA-g3ff-q88g-chrj</a></td>
+              <td>Argo CD</td>
+              <td>Moderate (4.9)</td>
+              <td>Extension proxy RBAC namespace omission allowed cross-namespace access when applications-in-any-namespace was enabled</td>
             </tr>
             <tr>
               <td><a href="https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-27w2-26m5-x82c">CVE-2026-100609</a></td>
