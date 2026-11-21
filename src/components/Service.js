@@ -392,10 +392,6 @@ const Service = () => (
       <div className="space-y-3">
         {[
           {
-            event: 'WeAreDevelopers Hackathon',
-            url: 'https://lablab.ai/ai-hackathons/wearedevelopers-hackathon',
-          },
-          {
             event: 'AI Infra Summit Hackathon',
             url: 'https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon',
             certificate: '/certificates/ai-infra-summit-hackathon.pdf',

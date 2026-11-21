@@ -132,7 +132,6 @@ class Main extends React.Component {
 
           <h3>Hackathon Judging</h3>
           <ul>
-            <li><a href="https://lablab.ai/ai-hackathons/wearedevelopers-hackathon"><strong>WeAreDevelopers Hackathon</strong></a> — Judge</li>
             <li><a href="https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon"><strong>AI Infra Summit Hackathon</strong></a> — Judge · <a href="/certificates/ai-infra-summit-hackathon.pdf">Certificate</a></li>
           </ul>
 
