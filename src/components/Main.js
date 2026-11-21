@@ -152,6 +152,12 @@ class Main extends React.Component {
               <td>Extension proxy RBAC namespace omission allowed cross-namespace access when applications-in-any-namespace was enabled</td>
             </tr>
             <tr>
+              <td><a href="https://github.com/langflow-ai/langflow/security/advisories/GHSA-95rw-c7w3-xh7f">CVE-2026-7646</a></td>
+              <td>Langflow</td>
+              <td>Critical (9.6, Langflow advisory); Medium (6.5, IBM CVE record)</td>
+              <td>MCP path traversal allowed server file reads, including the JWT signing secret, with reported account-takeover impact</td>
+            </tr>
+            <tr>
               <td><a href="https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-27w2-26m5-x82c">CVE-2026-100609</a></td>
               <td>Flowise</td>
               <td>High (7.6)</td>

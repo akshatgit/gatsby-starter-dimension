@@ -18,6 +18,30 @@ const cvePosts = [
         outlet: 'Suriq',
         url: 'https://suriq.io/blog/argo-cd-coordinated-security-release-four-critical',
       },
+      {
+        outlet: 'Maborak Technologies',
+        url: 'https://www.maborak.com/blog/argo-cd-october-2026-security-releases',
+      },
+    ],
+  },
+  {
+    id: 'CVE-2026-7646',
+    project: 'Langflow',
+    severity: 'Critical',
+    score: '9.6',
+    date: '2026-11-17',
+    desc: 'Authenticated MCP resource path traversal allowed server file reads, including the JWT signing secret; the reported impact includes forged tokens and account takeover. Langflow scores this impact 9.6; IBM scores the file-read impact 6.5.',
+    url: 'https://github.com/langflow-ai/langflow/security/advisories/GHSA-95rw-c7w3-xh7f',
+    aliases: ['GHSA-95rw-c7w3-xh7f'],
+    references: [
+      {
+        label: 'IBM CVE bulletin (6.5)',
+        url: 'https://www.ibm.com/support/pages/node/7282147',
+      },
+      {
+        label: 'AhnLab security roundup',
+        url: 'https://asec.ahnlab.com/en/95159/',
+      },
     ],
   },
   {
